@@ -4,6 +4,8 @@ A react component (Tree file management)
 
 I wrote three files: FileSystem.tsx, FileSystemStyles.css, FileSystemTypes.ts
 
+bug: Moving folders to themselves causes folders to be deleted
+
 ---
 
 - Reference
