@@ -2,7 +2,9 @@
 
 A react component (Tree file management)
 
-I wrote three files: FileSystem.tsx, FileSystemStyles.css, FileSystemTypes.ts
+I wrote three files: `FileSystem.tsx`, `FileSystemStyles.css`, `FileSystemTypes.ts`
+
+More information in the warehouse branch
 
 ---
 
