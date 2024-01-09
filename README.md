@@ -2,6 +2,8 @@
 
 A react component (Tree file management)
 
+I wrote three files: FileSystem.tsx, FileSystemStyles.css, FileSystemTypes.ts
+
 ---
 
 # Getting Started with Create React App
