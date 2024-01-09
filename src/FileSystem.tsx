@@ -19,15 +19,32 @@ const FileSystem: React.FC = () => {
         { id: '5', name: '文件3', type: 'file' }
     ]);
 
+    // const toggleFolder = (id: string) => {
+    //     console.log('toggleFolder', id);
+    //     setNodes(currentNodes =>
+    //         currentNodes.map(node =>
+    //             node.id === id
+    //                 ? { ...node, isOpen: !node.isOpen }
+    //                 : node
+    //         )
+    //     );
+    // };
     const toggleFolder = (id: string) => {
-        setNodes(currentNodes =>
-            currentNodes.map(node =>
-                node.id === id
-                    ? { ...node, isOpen: !node.isOpen }
-                    : node
-            )
-        );
+        setNodes(currentNodes => toggleNodeOpen(currentNodes, id));
     };
+    
+    const toggleNodeOpen = (nodes: FileSystemNode[], id: string): FileSystemNode[] => {
+        return nodes.map(node => {
+            if (node.id === id) {
+                return { ...node, isOpen: !node.isOpen };
+            } else if (node.children) {
+                return { ...node, children: toggleNodeOpen(node.children, id) };
+            } else {
+                return node;
+            }
+        });
+    };
+    
 
     const handleDragStart = (e: React.DragEvent, node: FileSystemNode) => {
         e.dataTransfer.setData("node/id", node.id);
