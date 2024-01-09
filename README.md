@@ -6,6 +6,26 @@ I wrote three files: FileSystem.tsx, FileSystemStyles.css, FileSystemTypes.ts
 
 ---
 
+- Reference
+	- 基础
+		- [TypeScript 语言简介 - TypeScript 教程 - 网道](https://wangdoc.com/typescript/intro)
+		- [TypeScript 入门教程](https://ts.xcatliu.com/)
+	- 视频
+		- [TypeScript Tutorial - Introduction & Setup - YouTube](https://www.youtube.com/watch?v=2pZmKW9-I_k&list=PL4cUxeGkcC9gUgr39Q_yD6v-bSyMwKPUI)
+	- 题目
+	- 练习
+		- [TypeScript: 演练场 - 一个用于 TypeScript 和 JavaScript 的在线编辑器](https://www.typescriptlang.org/zh/play)
+	- 进阶
+		- [Advanced TypeScript - YouTuBe](https://youtube.com/playlist?list=PLIvujZeVDLMx040-j1W4WFs1BxuTGdI_b)
+		- [TypeScript AST Viewer](https://ts-ast-viewer.com/#)
+		- [AST - TypeScript Deep Dive](https://basarat.gitbook.io/typescript/overview/ast)
+		- [抽象语法树 | 深入理解 TypeScript](https://jkchao.github.io/typescript-book-chinese/compiler/ast.html)
+	- 拓展
+		- [React入门应该是这样的！！！- bilibili](https://www.bilibili.com/video/BV1be411w7iF/)
+		- [Quick Start – React](https://react.dev/learn)
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

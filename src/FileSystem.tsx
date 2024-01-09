@@ -19,20 +19,11 @@ const FileSystem: React.FC = () => {
         { id: '5', name: '文件3', type: 'file' }
     ]);
 
-    // const toggleFolder = (id: string) => {
-    //     console.log('toggleFolder', id);
-    //     setNodes(currentNodes =>
-    //         currentNodes.map(node =>
-    //             node.id === id
-    //                 ? { ...node, isOpen: !node.isOpen }
-    //                 : node
-    //         )
-    //     );
-    // };
+
     const toggleFolder = (id: string) => {
         setNodes(currentNodes => toggleNodeOpen(currentNodes, id));
     };
-    
+
     const toggleNodeOpen = (nodes: FileSystemNode[], id: string): FileSystemNode[] => {
         return nodes.map(node => {
             if (node.id === id) {
@@ -44,14 +35,17 @@ const FileSystem: React.FC = () => {
             }
         });
     };
-    
+
 
     const handleDragStart = (e: React.DragEvent, node: FileSystemNode) => {
         e.dataTransfer.setData("node/id", node.id);
+        console.log('drag start');
         e.stopPropagation();
     };
 
     const handleDragOver = (e: React.DragEvent) => {
+        // 回报率很高
+        console.log('drag over');
         e.preventDefault();
     };
 
@@ -60,6 +54,8 @@ const FileSystem: React.FC = () => {
         const draggedNodeId = e.dataTransfer.getData("node/id");
 
         setNodes(currentNodes => {
+            console.log('drop');
+
             // 深拷贝当前节点数据
             let newNodes = JSON.parse(JSON.stringify(currentNodes));
             const draggedNode = findNode(newNodes, draggedNodeId);
