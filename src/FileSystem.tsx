@@ -119,10 +119,47 @@ const FileSystem: React.FC = () => {
         }
     };
 
+    // const renderTree = (nodes: FileSystemNode[]): JSX.Element => {
+    //     return (
+    //         <ul>
+    //             {nodes.map(node => (
+    //                 <li
+    //                     key={node.id}
+    //                     className={`node ${node.type}`}
+    //                     draggable={node.type === 'folder' || node.type === 'file'}
+    //                     onDragStart={(e) => handleDragStart(e, node)}
+    //                     onDragOver={node.type === 'folder' ? handleDragOver : undefined}
+    //                     onDrop={node.type === 'folder' ? (e) => handleDrop(e, node) : undefined}
+    //                     onClick={(e) => {
+    //                         if (node.type === 'folder') {
+    //                             toggleFolder(node.id);
+    //                         }
+    //                         e.stopPropagation();
+    //                     }}
+    //                 >
+    //                     {node.name}
+    //                     {node.type === 'folder' && (!node.children || node.children.length === 0) && <span> (空)</span>}
+    //                     {node.isOpen && node.children && renderTree(node.children)}
+    //                 </li>
+    //             ))}
+    //         </ul>
+    //     );
+    // };
+
     const renderTree = (nodes: FileSystemNode[]): JSX.Element => {
+        // 对节点进行排序
+        const sortedNodes = nodes.sort((a, b) => {
+            // 首先按类型排序（文件夹在前，文件在后）
+            if (a.type === b.type) {
+                // 如果类型相同，则按名称排序
+                return a.name.localeCompare(b.name);
+            }
+            return a.type === 'folder' ? -1 : 1;
+        });
+    
         return (
             <ul>
-                {nodes.map(node => (
+                {sortedNodes.map(node => (
                     <li
                         key={node.id}
                         className={`node ${node.type}`}
@@ -145,6 +182,7 @@ const FileSystem: React.FC = () => {
             </ul>
         );
     };
+    
 
     // return <div>{renderTree(nodes)}</div>;
     // 在根目录元素上添加拖放事件处理器
