@@ -5,6 +5,7 @@
     border-radius: 15px;
     cursor: pointer;
     user-select: none;
+    transition: background-color 0.3s;
 }
 
 .node.not-allowed {
@@ -24,6 +25,15 @@ ul {
     list-style-type: none;
     padding: 0;
 }
+
+.folder:hover {
+    background-color: #f0f6f8;
+}
+
+.file:hover {
+    background-color: #5b7083;
+}
+
 
 .App {
     padding: 20px;
