@@ -52,23 +52,23 @@ const FileSystem: React.FC = () => {
     const handleDrop = (e: React.DragEvent, targetNode?: FileSystemNode) => {
         e.preventDefault();
         const draggedNodeId = e.dataTransfer.getData("node/id");
-    
+
         // 检查是否将节点拖放到了自己身上
         if (targetNode && targetNode.id === draggedNodeId) {
             console.log('Attempted to drop a node onto itself.');
             return; // 直接返回，不进行任何操作
         }
-    
+
         setNodes(currentNodes => {
             console.log('drop');
-    
+
             // 深拷贝当前节点数据
             let newNodes = JSON.parse(JSON.stringify(currentNodes));
             const draggedNode = findNode(newNodes, draggedNodeId);
-    
+
             // 从原位置移除被拖动的节点
             removeNode(newNodes, draggedNodeId);
-    
+
             if (targetNode) {
                 // 如果有目标节点，且目标节点是文件夹
                 const targetFolder = targetNode.type === 'folder' ? findNode(newNodes, targetNode.id) : null;
@@ -81,10 +81,10 @@ const FileSystem: React.FC = () => {
                     newNodes.push(draggedNode);
                 }
             }
-    
+
             return newNodes;
         });
-    
+
         e.stopPropagation();
     };
 
@@ -119,33 +119,6 @@ const FileSystem: React.FC = () => {
         }
     };
 
-    // const renderTree = (nodes: FileSystemNode[]): JSX.Element => {
-    //     return (
-    //         <ul>
-    //             {nodes.map(node => (
-    //                 <li
-    //                     key={node.id}
-    //                     className={`node ${node.type}`}
-    //                     draggable={node.type === 'folder' || node.type === 'file'}
-    //                     onDragStart={(e) => handleDragStart(e, node)}
-    //                     onDragOver={node.type === 'folder' ? handleDragOver : undefined}
-    //                     onDrop={node.type === 'folder' ? (e) => handleDrop(e, node) : undefined}
-    //                     onClick={(e) => {
-    //                         if (node.type === 'folder') {
-    //                             toggleFolder(node.id);
-    //                         }
-    //                         e.stopPropagation();
-    //                     }}
-    //                 >
-    //                     {node.name}
-    //                     {node.type === 'folder' && (!node.children || node.children.length === 0) && <span> (空)</span>}
-    //                     {node.isOpen && node.children && renderTree(node.children)}
-    //                 </li>
-    //             ))}
-    //         </ul>
-    //     );
-    // };
-
     const renderTree = (nodes: FileSystemNode[]): JSX.Element => {
         // 对节点进行排序
         const sortedNodes = nodes.sort((a, b) => {
@@ -156,7 +129,7 @@ const FileSystem: React.FC = () => {
             }
             return a.type === 'folder' ? -1 : 1;
         });
-    
+
         return (
             <ul>
                 {sortedNodes.map(node => (
@@ -182,7 +155,7 @@ const FileSystem: React.FC = () => {
             </ul>
         );
     };
-    
+
 
     // return <div>{renderTree(nodes)}</div>;
     // 在根目录元素上添加拖放事件处理器
